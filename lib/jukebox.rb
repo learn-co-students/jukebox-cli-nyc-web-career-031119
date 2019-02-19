@@ -31,16 +31,13 @@ def help
 end 
 
 def play(songs)
+  binding.pry
  puts "Please enter a song name or number:"
  song = gets.strip 
  songs.each_with_index do |name, num| 
-   binding.pry
  if song == name || song == num+1
-   binding.pry
  puts "Playing #{song}"
- binding.pry
  else puts "Invalid input, please try again"
- binding.pry
  end 
  end
 end
