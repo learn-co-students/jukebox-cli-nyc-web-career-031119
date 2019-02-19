@@ -31,15 +31,16 @@ def help
 end 
 
 def play(songs)
-  binding.pry
- puts "Please enter a song name or number:"
- song = gets.strip 
- songs.each_with_index do |name, num| 
- if song == name || song == num+1
- puts "Playing #{song}"
- else puts "Invalid input, please try again"
- end 
- end
+puts "Please enter a song name or number:"
+song = gets.strip 
+songs.each_with_index do |name, num| 
+if song == name 
+puts "Playing #{song}"
+elsif song == num.to_i
+puts "Playing #{song}"
+else puts "Invalid input, please try again"
+end 
+end
 end
 
 def list(songs)
@@ -56,12 +57,13 @@ def run(songs)
   puts "Please enter a command:"
   command = gets.strip
   if command == "list"
-    list
+    list(songs)
   elsif command == "play"
-    play
+    play(songs)
   elsif command == "help"
     help 
-  else exit_jukebox
+  else 
+    exit_jukebox
   end 
 end 
 
