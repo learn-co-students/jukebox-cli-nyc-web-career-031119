@@ -33,16 +33,10 @@ end
 def play(songs)
   puts "Please enter a song name or number:"
   song = gets.strip 
-  song_found = false
-  songs.each_with_index do |name, index|
-  if  song == name || song.to_i == index+1
-    song_found = true
- end
-  end 
-  if song_found 
-    puts "Playing #{song}"
-  elsif (1..9).include?(song.to_i)
+  if (1..9).include?(song.to_i)
    puts "Playing #{songs[song.to_i-1]}"
+  elsif songs.include?(song)
+    puts "Playing #{song}"
   else
    puts "Invalid input, please try again"
  end 

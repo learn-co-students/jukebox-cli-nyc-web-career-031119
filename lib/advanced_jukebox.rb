@@ -2,14 +2,14 @@
 #make sure to edit the value of each key to replace < path to this directory >
 #with the correct path to this directory on your computer
 
-# my_songs = {
-"Go Go GO" => <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/01.mp3,
-"LiberTeens" => <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/02.mp3,
-"Hamburg" =>  <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/03.mp3,
-"Guiding Light" => <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/04.mp3,
-"Wolf" => <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/05.mp3,
-"Blue" => <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/06.mp3,
-"Graduation Failed" => <Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/07.mp3
+my_songs = {
+"Go Go GO" => '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/01.mp3',
+"LiberTeens" => '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/02.mp3',
+"Hamburg" =>  '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/03.mp3',
+"Guiding Light" => '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/04.mp3',
+"Wolf" => '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/05.mp3',
+"Blue" => '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/06.mp3',
+"Graduation Failed" => '<Users/peaceful-thread-2438/home/Dev>/jukebox-cli/audio/Emerald-Park/07.mp3/'
 }
 
 def help
@@ -28,9 +28,8 @@ def list(my_songs)
   #list the songs by name
 songs << my_songs.keys
 
-    puts "#{songs}"
+    puts "#{my_songs}"
   end 
-end
 
 
 def play(my_songs)
@@ -43,13 +42,11 @@ def play(my_songs)
   #get the file path of the song by looking it up in the my_songs hash
   puts "Please enter a song name or number:"
   song = gets.strip 
-  my_songs.each do |name, value|
-  if song == name
-    puts "Playing #{name}"
-    system 'open <#{value}>'
- end
-  end 
-  puts "Invalid input, please try again"
+  if songs.include?(song)
+    puts "Playing #{song}"
+  else
+   puts "Invalid input, please try again"
+ end 
 end
 
 def exit_jukebox
@@ -62,9 +59,9 @@ def run(my_songs)
    puts "Please enter a command:"
   command = gets.strip
   if command == "list"
-    list(songs)
+    list(my_songs)
   elsif command == "play"
-    play(songs)
+    play(my_songs)
   elsif command == "help"
     help 
   else 
